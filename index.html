@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book & Notes Vault</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
 
   <body>
@@ -23,30 +23,60 @@
       </ul>
     </nav>
     <main id="main-content">
-        <section id="dashboard">
-            <h2>Dashboard</h2>
-        </section>
-        
-        <section id="books">
-            <h2>Books</h2>
-        </section>
+      <section id="dashboard">
+        <h2>Dashboard</h2>
+      </section>
 
-        <section id="add-book">
-            <h2>Add a Book</h2>
-        </section>
+      <section id="books">
+        <h2>Books</h2>
+      </section>
 
-        <section id="settings">
-            <h2>Settings</h2>
-        </section>
+      <section id="add-book">
+        <h2>Add a Book</h2>
 
-        <section id="about">
-            <h2>About</h2>
-        </section>
+        <form id="book-form">
+          <div>
+            <label for="title">Book Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
 
+          <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required />
+          </div>
+
+          <div>
+            <label for="pages">Pages</label>
+            <input
+              type="number"  id="pages"  name="pages"  min="1" max="5000" required />
+          </div>
+
+          <div>
+            <label for="tag">Tag</label>
+            <input type="text" id="tag" name="tag" placeholder="e.g. Novel or Mathematics" required />
+          </div>
+
+          <div>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <button type="submit">Save Book</button>
+          <button type="reset">Clear Form</button>
+        </form>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+      </section>
     </main>
 
     <footer>
-        <p>2026 Book & Notes Vault</p>
+      <p>2026 Book & Notes Vault</p>
     </footer>
   </body>
 </html>
