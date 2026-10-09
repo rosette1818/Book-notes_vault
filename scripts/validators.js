@@ -1,6 +1,8 @@
 function validateTitle(title) {
   return !/^\s*$/.test(title);
 }
+// console.log(validateTitle(" "));
+// console.log(validateTitle("first"));
 
 function validateAuthor(author) {
   return !/^\s*$/.test(author);
