@@ -9,7 +9,10 @@ body {
 header {
     padding: 1.5rem 0;
 }
-
+h1{
+  font-size: 0.5 rem
+  ;
+}
 nav {
     margin-bottom: 2rem;
 }
