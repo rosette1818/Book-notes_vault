@@ -1,5 +1,5 @@
 const bookForm = document.getElementById("book-form");
-const books = [];
+const books =loadBooks();
 
 bookForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -47,6 +47,7 @@ bookForm.addEventListener("submit", function (event) {
       updatedAt: now,
     };
     books.push(book);
+    saveBooks(books)   
     console.log("Book records:", book);
     alert("Book added successfully!");
     bookForm.reset();
