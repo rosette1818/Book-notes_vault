@@ -5,7 +5,7 @@ function compileRegex(input, flags = "i") {
   try {
     return new RegExp(input, flags);
   } catch (error) {
-    return null;
+        return null;
   }
 }
 

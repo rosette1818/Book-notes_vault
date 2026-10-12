@@ -4,9 +4,11 @@ showBooks(books);
 const searchInput = document.getElementById("search-books");
 const sortSelect = document.getElementById("sort-books");
 function updateBookDisplay() {
+  const searchText = searchInput.value;
+  const regex = searchText ? new RegExp(searchText, "i") : null;
   const filteredBooks = searchBooks(books, searchInput.value);
   const sortedBooks = sortBooks(filteredBooks, sortSelect.value);
-  showBooks(sortedBooks);
+  showBooks(sortedBooks, regex);
 }
 searchInput.addEventListener("input", function () {
   updateBookDisplay();

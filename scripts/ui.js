@@ -1,26 +1,49 @@
-function showBooks(books) {
+function showBooks(books, regex) {
 const booksList = document.getElementById("books-list");
 booksList.innerHTML = "";
 books.forEach(function(book) {
     const bookCard = document.createElement("li");
     const titleElement = document.createElement("h3");
-    titleElement.textContent = book.title;
+    titleElement.replaceChildren(highlightText(book.title, regex));   
     bookCard.appendChild(titleElement);
     const authorElement = document.createElement("p");
-    authorElement.textContent = book.author;
+    authorElement.replaceChildren(highlightText(book.author, regex));
     bookCard.appendChild(authorElement);
     const pagesElement = document.createElement("p");
-    pagesElement.textContent = `Pages: ${book.pages}`;
+    pagesElement.replaceChildren(highlightText(String(book.pages), regex));
     bookCard.appendChild(pagesElement);
     const tagElement = document.createElement("p");
-    tagElement.textContent = `Tag: ${book.tag}`;
-    bookCard.appendChild(tagElement);
+    tagElement.replaceChildren(highlightText(book.tag, regex));
+     bookCard.appendChild(tagElement);
     const dateElement = document.createElement("p");
-    dateElement.textContent = `Date Added: ${book.dateAdded}`;
+    dateElement.replaceChildren(highlightText(book.dateAdded, regex));
     bookCard.appendChild(dateElement);
     booksList.appendChild(bookCard);
 });
 }
+function highlightText(text, regex) {
+    if (!regex) {
+        return text;
+    }
+    const highlightRegex = new RegExp(`(${regex.source})`, regex.flags);
+    const parts = text.split(highlightRegex);
+    const highlightedParts = parts.map(function(part) {
+        highlightRegex.lastIndex = 0;
+        if (highlightRegex.test(part)) {
+            const mark = document.createElement("mark");
+            mark.textContent = part;
+            return mark;
+        } else {
+            return document.createTextNode(part);
+        }
+    });
+        const fragment = document.createDocumentFragment();
+    highlightedParts.forEach(function(node) {
+        fragment.appendChild(node);
+    });
+    return fragment;
+}
+
 function searchBooks(books, searchText) {
     return books.filter(function(book) {
         return book.title.toLowerCase().includes(searchText.toLowerCase()) || book.author.toLowerCase().includes(searchText.toLowerCase());
