@@ -25,7 +25,23 @@
     <main id="main-content">
       <section id="dashboard">
         <h2>Dashboard</h2>
-      </section>
+        <p>Total Books</p>
+        <p id="total-books">0</p>
+        <p>Total Pages</p>
+        <p id="total-pages">0</p>
+        <p>The most common tag</p>
+        <p id="most-common-tag">None</p>
+        <p>Books added this week</p>
+        <p id="books-this-week">0</p>
+        <p>Page Target</p>
+        <p id="page-target">0</p>
+        <p>Pages remaining</p>
+        <p id="pages-remaining">0</p>
+              </section>
+      <section aria-labelledby="weekly-chart-heading">
+  <h3 id="weekly-chart-heading">Books Added In The Last 7 Days</h3>
+  <div id="weekly-chart"></div>
+</section>
 
       <section id="books">
         <h2>Books</h2>
@@ -37,7 +53,6 @@
     </label>
         <input type="text" id="search-books" placeholder="Search by title or author...">
         <p id="search-error" role="alert"></p>
-        <label for="case-insensitive">
         </div>
 
    <div> 
@@ -76,7 +91,7 @@
 
           <div>
             <label for="tag">Tag</label>
-            <input type="text" id="tag" name="tag" laceholder="e.g. Novel or Mathematics" required />
+            <input type="text" id="tag" name="tag" placeholder="e.g. Novel or Mathematics" required />
           </div>
 
           <div>
