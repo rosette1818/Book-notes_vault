@@ -31,8 +31,14 @@
         <h2>Books</h2>
     <div>
         <label for="search-books">Search books:</label>
+         <label for="case-insensitive">
+    <input type="checkbox" id="case-insensitive" checked />
+         Search ignoring capitalization
+    </label>
         <input type="text" id="search-books" placeholder="Search by title or author...">
-    </div>
+        <p id="search-error" role="alert"></p>
+        <label for="case-insensitive">
+        </div>
 
    <div> 
         <label for="sort-books">Sort books by:</label>

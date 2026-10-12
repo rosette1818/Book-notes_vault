@@ -2,18 +2,26 @@ const bookForm = document.getElementById("book-form");
 const books = loadBooks();
 showBooks(books);
 const searchInput = document.getElementById("search-books");
+const caseInsensitive = document.getElementById("case-insensitive");
+const searchError = document.getElementById("search-error");
 const sortSelect = document.getElementById("sort-books");
 function updateBookDisplay() {
-  const searchText = searchInput.value;
-  const regex = searchText ? new RegExp(searchText, "i") : null;
-  const filteredBooks = searchBooks(books, searchInput.value);
-  const sortedBooks = sortBooks(filteredBooks, sortSelect.value);
-  showBooks(sortedBooks, regex);
+    const searchText = searchInput.value;
+    const regex = compileRegex(searchText, caseInsensitive.checked);
+    if (regex === false) {
+        searchError.textContent = "Invalid expression! Please check your input.";
+        showBooks([], null);
+        return;
+    }
+    searchError.textContent = "";
+    const filteredBooks = searchBooks(books, searchText, caseInsensitive.checked);
+    const sortedBooks = sortBooks(filteredBooks, sortSelect.value);
+    showBooks(sortedBooks, regex);
 }
 searchInput.addEventListener("input", function () {
   updateBookDisplay();
 });
-
+caseInsensitive.addEventListener("change", updateBookDisplay);
 sortSelect.addEventListener("change", function () {
   updateBookDisplay();
 });
