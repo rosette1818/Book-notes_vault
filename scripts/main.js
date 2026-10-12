@@ -1,6 +1,11 @@
 const bookForm = document.getElementById("book-form");
 const books =loadBooks();
-
+showBooks(books);
+const searchInput = document.getElementById("search-books");
+searchInput.addEventListener("input", function() {
+    const filteredBooks = searchBooks(books, searchInput.value);
+    showBooks(filteredBooks);
+});
 bookForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -13,7 +18,7 @@ bookForm.addEventListener("submit", function (event) {
   const isTitleValid = validateTitle(title);
   const isDateValid = validateDate(date);
   const isPagesValid = validatePages(pages);
-  const isAuthorValid = validateAuthor(author);
+  const isAuthorValid = validateAuthor(author); 
   const isTagValid = validateTag(tag);
   const hasRepeatedTitleWords = hasRepeatedWords(title);
   const isFormValid =
@@ -47,7 +52,8 @@ bookForm.addEventListener("submit", function (event) {
       updatedAt: now,
     };
     books.push(book);
-    saveBooks(books)   
+    saveBooks(books);   
+    showBooks(books);
     console.log("Book records:", book);
     alert("Book added successfully!");
     bookForm.reset();

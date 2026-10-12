@@ -29,6 +29,24 @@
 
       <section id="books">
         <h2>Books</h2>
+    <div>
+        <label for="search-books">Search books:</label>
+        <input type="text" id="search-books" placeholder="Search by title or author...">
+    </div>
+
+   <div> 
+        <label for="sort-books">Sort books by:</label>
+        <select id="sort-books">
+         <option value="title">Title</option>
+         <option value="date">Date Added</option>
+         <option value="pages">Number of Pages</option>
+        </select>
+
+    </div>
+
+   <ul id="books-list">
+    </ul>
+</section>
       </section>
 
       <section id="add-book">
@@ -80,6 +98,8 @@
     </footer>
     <script src="scripts/storage.js"></script>
     <script src="scripts/validators.js"></script>
+    <script src="scripts/ui.js"></script>
     <script src="scripts/main.js"></script>
+
   </body>
 </html>
