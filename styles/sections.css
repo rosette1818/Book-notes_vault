@@ -1,0 +1,166 @@
+
+/* =================================
+   DASHBOARD
+================================= */
+
+#dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+#dashboard h2 {
+  grid-column: 1 / -1;
+}
+
+#dashboard p {
+  min-width: 0;
+  margin: 0;
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  background-color: var(--surface-soft);
+  overflow-wrap: anywhere;
+}
+
+#dashboard p:nth-of-type(odd) {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+#dashboard p:nth-of-type(even) {
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* =================================
+   WEEKLY CHART
+================================= */
+
+#weekly-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.chart-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.chart-row > div:first-child {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.chart-bar {
+  min-height: 0.7rem;
+  max-width: 100%;
+  border-radius: 1rem;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+/* =================================
+   BOOKS SECTION
+================================= */
+
+#books {
+  width: 100%;
+}
+
+#books h2 {
+  margin-bottom: 1.25rem;
+}
+
+#books-list:empty {
+  margin-top: 0;
+}
+
+/* =================================
+   ADD BOOK SECTION
+================================= */
+
+#add-book {
+  width: 100%;
+}
+
+#add-book form {
+  margin-top: 1rem;
+}
+
+/* =================================
+   SETTINGS SECTION
+================================= */
+
+#settings {
+  width: 100%;
+}
+
+#settings h3 {
+  margin-top: 1.5rem;
+}
+
+#settings h3:first-of-type {
+  margin-top: 0;
+}
+
+#settings h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#goal-status {
+  margin-top: 0.75rem;
+  color: var(--success);
+  font-weight: 600;
+}
+
+#conversion-result {
+  padding: 0.85rem;
+  border-radius: 0.5rem;
+  background-color: var(--surface-soft);
+  overflow-wrap: anywhere;
+}
+
+/* =================================
+   ABOUT SECTION
+================================= */
+
+#about {
+  width: 100%;
+}
+
+#about h3 {
+  margin-top: 1.5rem;
+}
+
+#about h3:first-of-type {
+  margin-top: 0;
+}
+
+#about p {
+  max-width: 75ch;
+}
+
+#about ul {
+  margin-top: 0.5rem;
+}
+
+#about a {
+  overflow-wrap: anywhere;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+  border-top: 1px solid var(--border);
+}

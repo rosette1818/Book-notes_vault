@@ -17,6 +17,7 @@ const pageCountInput = document.getElementById("page-count");
 const conversionType = document.getElementById("conversion-type");
 const conversionResult = document.getElementById("conversion-result");
 const exportBooksButton = document.getElementById("export-books");
+const deleteAllBooksButton = document.getElementById("delete-all-books");
 const importBooksInput = document.getElementById("import-books");
 importBooksInput.addEventListener("change", function (event) {
 const file = event.target.files[0];
@@ -52,7 +53,7 @@ saveBooks(books);
 showBooks(books);
     updateWeeklyChart();
     updateDashboard();
-    alert("Books imported successfully!");
+    showStatus("Books imported successfully!");
     importBooksInput.value = "";
 
       console.log(importedBooks);
@@ -74,6 +75,31 @@ link.download = "my-books.json";
 link.click();
 URL.revokeObjectURL(url);
 
+});
+deleteAllBooksButton.addEventListener("click", function () {
+  if (books.length === 0) {
+    alert("There are no books to delete!");
+    return;
+  }
+
+  const confirmDelete = confirm(
+    "Are you sure you want to delete ALL books? This action cannot be undone."
+  );
+
+  if (confirmDelete) {
+    books.splice(0, books.length);
+
+    saveBooks(books);
+    showBooks(books);
+    updateWeeklyChart();
+    updateDashboard();
+
+    editingBookId = null;
+    submitBookButton.textContent = "Save Book";
+    bookForm.reset();
+
+    alert("All books deleted successfully!");
+  }
 });
 function convertPages() {
   const pageCount = Number(pageCountInput.value);
@@ -299,24 +325,31 @@ bookForm.addEventListener("submit", function (event) {
       updatedAt: now,
     };
     if (editingBookId !== null) {
-      const bookIndex = books.findIndex(function (item) {
-        return item.id === editingBookId;
-      });
-      if (bookIndex !== -1) {
-        book.id = books[bookIndex].id;
-        book.createdAt = books[bookIndex].createdAt;
-        book.updatedAt = new Date().toISOString();
-        books[bookIndex] = book;
-      }
-    } else {
-      books.push(book);
-    }
-    editingBookId = null;
-    saveBooks(books);
-    showBooks(books);
-    updateWeeklyChart();
-    updateDashboard();
-        alert("Book added successfully!");
-    bookForm.reset();
+  const bookIndex = books.findIndex(function (item) {
+    return item.id === editingBookId;
+  });
+
+  if (bookIndex !== -1) {
+    books[bookIndex] = {
+      ...book,
+      id: editingBookId,
+      createdAt: books[bookIndex].createdAt,
+      updatedAt: new Date().toISOString()
+    };
+
+    showStatus("Book updated successfully!");
+  }
+} else {
+  books.push(book);
+  showStatus("Book added successfully!");
+}
+  saveBooks(books);
+showBooks(books);
+updateWeeklyChart();
+updateDashboard();
+
+editingBookId = null;
+submitBookButton.textContent = "Save Book";
+bookForm.reset();
   }
 });

@@ -1,0 +1,96 @@
+
+/* =================================
+   LIGHT THEME
+================================= */
+
+:root {
+  color-scheme: light;
+
+  --background: #f7f6f2;
+  --surface: #ffffff;
+  --surface-soft: #eeeee8;
+
+  --text: #292d32;
+  --text-muted: #777d78;
+
+  --accent: #718878;
+  --accent-hover: #5b7463;
+  --accent-soft: #e5ede6;
+
+  --border: #e2e5df;
+  --danger: #c65c5c;
+  --danger-hover: #a94444;
+
+  --success: #557b5d;
+  --shadow: 0 4px 18px rgba(35, 45, 38, 0.06);
+}
+
+/* =================================
+   DARK THEME
+================================= */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #171b1a;
+  --surface: #222927;
+  --surface-soft: #2c3430;
+
+  --text: #edf0eb;
+  --text-muted: #a6afa8;
+
+  --accent: #91aa97;
+  --accent-hover: #a9c0ae;
+  --accent-soft: #35443a;
+
+  --border: #39433e;
+  --danger: #ef8585;
+  --danger-hover: #ffaaaa;
+
+  --success: #9bc5a1;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* =================================
+   THEME APPLICATION
+================================= */
+
+body,
+section,
+input,
+select,
+button,
+#books-list li {
+  color: var(--text);
+}
+
+body {
+  background-color: var(--background);
+}
+
+section,
+#books-list li {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+p,
+label,
+li {
+  color: var(--text);
+}
+
+::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+mark {
+  background-color: #f4e7a1;
+  color: #292d32;
+}
+
+html[data-theme="dark"] mark {
+  background-color: #796a35;
+  color: #ffffff;
+}

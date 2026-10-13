@@ -1,0 +1,166 @@
+
+/* =================================
+   SMALL MOBILE SCREENS
+================================= */
+
+@media (max-width: 359px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  section {
+    padding: 0.85rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  #dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    max-width: 100%;
+    padding: 0.65rem 0.85rem;
+  }
+}
+
+/* =================================
+   MOBILE: 360px AND ABOVE
+================================= */
+
+@media (min-width: 360px) {
+  body {
+    padding: 1rem;
+  }
+
+  nav ul {
+    align-items: stretch;
+  }
+
+  nav a {
+    text-align: center;
+  }
+
+  #books-list li button {
+    min-width: 75px;
+  }
+}
+
+/* =================================
+   TABLET: 768px AND ABOVE
+================================= */
+
+@media (min-width: 768px) {
+  header {
+    text-align: left;
+  }
+
+  nav ul {
+    justify-content: flex-start;
+  }
+
+  nav a {
+    text-align: center;
+  }
+
+  #books-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #dashboard {
+    gap: 1rem;
+  }
+
+  #weekly-chart {
+    max-width: 800px;
+  }
+
+  #add-book form {
+    max-width: 650px;
+  }
+
+  #settings > input,
+  #settings > select {
+    max-width: 400px;
+  }
+}
+
+/* =================================
+   DESKTOP: 1024px AND ABOVE
+================================= */
+
+@media (min-width: 1024px) {
+  body {
+    padding: 2.5rem;
+  }
+
+  header {
+    padding: 2rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  nav {
+    margin-bottom: 2.5rem;
+  }
+
+  nav ul {
+    gap: 1.5rem;
+  }
+
+  #books-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #dashboard {
+    gap: 1.25rem;
+  }
+
+  #dashboard p {
+    padding: 1.1rem;
+  }
+
+  #add-book form {
+    max-width: 750px;
+  }
+
+  #settings {
+    max-width: 850px;
+  }
+
+  #about {
+    max-width: 950px;
+  }
+}
+
+/* =================================
+   PREVENT HORIZONTAL OVERFLOW
+================================= */
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+input,
+select,
+button {
+  max-width: 100%;
+}
+
+#books-list,
+#weekly-chart,
+main,
+section {
+  min-width: 0;
+}

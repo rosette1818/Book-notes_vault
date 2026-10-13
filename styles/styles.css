@@ -1,85 +1,208 @@
-body {
-    margin: 0;
-    padding: 1rem;
-    font-family: Cambria, Times, "Times New Roman", serif;
-    font-size: 1.5rem;
-    line-height: 1.7;
+
+/* =================================
+   1. GLOBAL RESET
+================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding: 1rem;
+  font-family: Cambria, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--background, #f7f6f2);
+  color: var(--text, #292d32);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* =================================
+   2. GENERAL TYPOGRAPHY
+================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  margin-bottom: 0.75rem;
+}
+
+a {
+  color: var(--accent, #718878);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =================================
+   3. HEADER
+================================= */
+
 header {
-    padding: 1.5rem 0;
+  padding: 1.5rem 0;
+  text-align: center;
 }
-h1{
-  font-size: 0.5 rem
-  ;
-}
+
+/* =================================
+   4. NAVIGATION
+================================= */
+
 nav {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 nav ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
 }
 
 nav a {
-    display: block;
-    padding: 0.5rem 0;
+  display: block;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
 }
 
+/* =================================
+   5. MAIN LAYOUT
+================================= */
+
 main {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  min-width: 0;
 }
 
 section {
-    padding: 1rem 0;
+  min-width: 0;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background-color: var(--surface, #ffffff);
 }
-a:focus-visible {
-    outline: 3px solid currentColor;
-    outline-offset: 4px;
+
+/* =================================
+   6. FOOTER
+================================= */
+
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted, #777d78);
 }
+
+
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--accent, #718878);
+  outline-offset: 3px;
+}
+
 a[href="#main-content"] {
-    position: absolute;
-    top: -100px;
-    left: 1rem;
-    padding: 0.5rem;
-    background: white;
-    font-size: 1rem;
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem;
+  background-color: var(--surface, #ffffff);
+  color: var(--text, #292d32);
 }
 
-a[href="#main-content"]:focus-visible {
-    top: 1rem;
+a[href="#main-content"]:focus {
+  top: 1rem;
 }
+
+
+
 @media (min-width: 768px) {
-    body {
-        max-width: 70rem;
-        margin: 0 auto;
-        padding: 2rem;
-    }
+  body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
 
-    nav ul {
-        flex-direction: row;
-        gap: 1rem;
-    }
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
 
-    nav a {
-        padding: 0.5rem;
-    }
+  main {
+    gap: 2rem;
+  }
 }
+
+
 
 @media (min-width: 1024px) {
-    body {
-        padding: 3rem;
-    }
+  body {
+    max-width: 1200px;
+    padding: 2.5rem;
+  }
 
-    main {
-        gap: 3rem;
-    }
+  main {
+    gap: 2rem;
+  }
 
-    section {
-        padding: 1.5rem 0;
-    }
+  section {
+    padding: 1.75rem;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

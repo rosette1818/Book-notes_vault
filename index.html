@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book & Notes Vault</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
+<link rel="stylesheet" href="styles/styles.css" />
+<link rel="stylesheet" href="styles/themes.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/sections.css" />
+<link rel="stylesheet" href="styles/responsive.css" />  </head>
 
   <body>
     <a href="#main-content">Skip to main content</a>
@@ -45,6 +48,7 @@
 
       <section id="books">
         <h2>Books</h2>
+        <p id="status-message" role="status" aria-live="polite"></p>
     <div>
         <label for="search-books">Search books:</label>
          <label for="case-insensitive">
@@ -65,11 +69,29 @@
 
     </div>
 <button type="button" id="export-books">Export Books (JSON)</button>
+<button type="button" id="delete-all-books">
+  Delete All Books
+</button>
 <input type="file" id="import-books" accept=".json,application/json">
-   <ul id="books-list">
-    </ul>
+   <div id="books-container">
+  <table id="books-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Tag</th>
+        <th>Date Added</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="books-table-body"></tbody>
+  </table>
+
+  <ul id="books-list"></ul>
+</div>
 </section>
-      </section>
+     
 
       <section id="add-book">
         <h2>Add a Book</h2>
@@ -130,11 +152,36 @@
 <p id="conversion-result" aria-live="polite">
   Your conversion result will appear here.
 </p>
+
       </section>
 
-      <section id="about">
-        <h2>About</h2>
-      </section>
+     <section id="about">
+  <h2>About</h2>
+
+  <h3>Our Purpose</h3>
+  <p>
+    Book & Notes Vault helps readers organize their personal book
+    collections in one place. Users can add, search, sort, edit,
+    and delete book records, track reading goals, and back up
+    their collections. Please use Book & Notes Vault to keep track
+    of your books
+  </p>
+  <h3>Features</h3>
+<ul>
+  <li>Organize books by title, author, page count, and category.</li>
+  <li>Search and sort your book collection.</li>
+  <li>Edit and delete book records.</li>
+  <li>Track reading statistics and goals.</li>
+  <li>Save records locally in the browser.</li>
+  <li>Import and export book data using JSON.</li>
+</ul>
+<h3>Contact</h3>
+<p>
+  Have questions, suggestions, or feedback?
+  Feel free to contact the project creator at
+  <a href="mailto:r.umurerwa@alustudent.com">r.umurerwa@alustudent.com</a>.
+</p>
+</section>
     </main>
 
     <footer>
