@@ -18,6 +18,44 @@ books.forEach(function(book) {
     const dateElement = document.createElement("p");
     dateElement.replaceChildren(highlightText(book.dateAdded, regex));
     bookCard.appendChild(dateElement);
+    const editButton = document.createElement("button");
+editButton.textContent = "Edit";
+bookCard.appendChild(editButton);
+editButton.addEventListener("click", function () {
+const selectedBook = books.find(function (item) {
+  return item.id === book.id;
+});
+if (selectedBook) {
+    editingBookId = selectedBook.id;
+    submitBookButton.textContent = "Update Book";
+document.getElementById("title").value = selectedBook.title;
+document.getElementById("author").value = selectedBook.author;
+document.getElementById("pages").value = selectedBook.pages;
+document.getElementById("tag").value = selectedBook.tag;
+document.getElementById("date").value = selectedBook.dateAdded;
+}
+});
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    bookCard.appendChild(deleteButton);deleteButton.addEventListener("click", function () {
+  const confirmDelete = confirm(
+    `Are you sure you want to delete? "${book.title}"?`
+  );
+
+  if (confirmDelete) {
+    const bookIndex = books.findIndex(function (item) {
+  return item.id === book.id;
+}
+
+);
+if (bookIndex !== -1) {
+  books.splice(bookIndex, 1);
+  saveBooks(books);
+  showBooks(books, regex);
+}
+  }
+});
+
     booksList.appendChild(bookCard);
 });
 }

@@ -1,11 +1,131 @@
 const bookForm = document.getElementById("book-form");
 const books = loadBooks();
+let editingBookId = null;
+const submitBookButton = document.getElementById("submit-book");
+submitBookButton.textContent = "Save Book";
+let totalPages = 0;
 const totalBooksElement = document.getElementById("total-books");
 const totalPagesElement = document.getElementById("total-pages");
 const mostCommonTagElement = document.getElementById("most-common-tag");
 const booksThisWeekElement = document.getElementById("books-this-week");
 const pageTargetElement = document.getElementById("page-target");
 const pagesRemainingElement = document.getElementById("pages-remaining");
+const pageTargetInput = document.getElementById("page-target-input");
+const saveTargetButton = document.getElementById("save-target");
+const goalStatus = document.getElementById("goal-status");
+const pageCountInput = document.getElementById("page-count");
+const conversionType = document.getElementById("conversion-type");
+const conversionResult = document.getElementById("conversion-result");
+const exportBooksButton = document.getElementById("export-books");
+const importBooksInput = document.getElementById("import-books");
+importBooksInput.addEventListener("change", function (event) {
+const file = event.target.files[0];
+if (!file) {
+  return;
+}
+const reader = new FileReader();
+reader.onload = function () {
+    try {
+      const importedBooks = JSON.parse(reader.result);
+      if (!Array.isArray(importedBooks)) {
+  throw new Error("Invalid book data");
+}
+const isValid = importedBooks.every(function (book) {
+  return (
+    book &&
+    typeof book.title === "string" &&
+    typeof book.author === "string" &&
+    Number.isInteger(book.pages) &&
+    book.pages > 0 &&
+    typeof book.tag === "string" &&
+    typeof book.dateAdded === "string" &&
+    (typeof book.id === "string" || typeof book.id === "number") &&
+    typeof book.createdAt === "string" &&
+    typeof book.updatedAt === "string"
+  );
+});
+if (!isValid) {
+  throw new Error("Invalid book information");
+}
+books.splice(0, books.length, ...importedBooks);
+saveBooks(books);
+showBooks(books);
+    updateWeeklyChart();
+    updateDashboard();
+    alert("Books imported successfully!");
+    importBooksInput.value = "";
+
+      console.log(importedBooks);
+
+    } catch (error) {
+      alert("Invalid JSON file. Please select a valid file.");
+    }
+  };
+
+  reader.readAsText(file);
+});
+exportBooksButton.addEventListener("click", function () {
+const jsonData = JSON.stringify(books, null, 2);
+const blob = new Blob([jsonData], { type: "application/json" });
+const url = URL.createObjectURL(blob);
+const link = document.createElement("a");
+link.href = url;
+link.download = "my-books.json";
+link.click();
+URL.revokeObjectURL(url);
+
+});
+function convertPages() {
+  const pageCount = Number(pageCountInput.value);
+  if (
+    pageCountInput.value.trim() === "" ||
+    !Number.isFinite(pageCount) ||
+    pageCount < 0
+  ) {
+    conversionResult.textContent =
+      "Please enter a valid page count (0 or greater).";
+    return;
+  }
+
+  if (conversionType.value === "pages-to-sheets") {
+    const result = pageCount / 2;
+    conversionResult.textContent = `${result} sheets`;
+  } else {
+    const result = pageCount * 2;
+    conversionResult.textContent = `${result} pages`;
+  }
+}
+pageCountInput.addEventListener("input", convertPages);
+conversionType.addEventListener("change", convertPages);
+saveTargetButton.addEventListener("click", function () {
+  const newTarget = Number(pageTargetInput.value);
+  if (
+    pageTargetInput.value.trim() === "" ||
+    !Number.isFinite(newTarget) ||
+    newTarget < 0
+  ) {
+    goalStatus.textContent = "Please enter a valid page number (0 or greater).";
+    return;
+  }
+  pageTarget = newTarget;
+  savePageTarget(pageTarget);
+  pageTargetElement.textContent = pageTarget.toLocaleString();
+  const pagesRemaining = Math.max(0, pageTarget - totalPages);
+  pagesRemainingElement.textContent = pagesRemaining.toLocaleString();
+  if (totalPages < pageTarget) {
+    const remainingPages = pageTarget - totalPages;
+    goalStatus.setAttribute("aria-live", "polite");
+    goalStatus.textContent = `${remainingPages} pages remaining to reach your reading goal`;
+  } else if (totalPages > pageTarget) {
+    const exceededPages = totalPages - pageTarget;
+    goalStatus.setAttribute("aria-live", "assertive");
+    goalStatus.textContent = `Congratulations🥳 You exceeded your reading goal by ${exceededPages} pages.`;
+  } else {
+    goalStatus.setAttribute("aria-live", "polite");
+    goalStatus.textContent =
+      "Congratulations🎉 You have reached your reading goal!";
+  }
+});
 const weeklyChartElement = document.getElementById("weekly-chart");
 function updateWeeklyChart() {
   const now = new Date();
@@ -49,46 +169,65 @@ function updateWeeklyChart() {
   });
 }
 updateWeeklyChart();
-const totalPages = books.reduce(function (total, book) {
-  return total + book.pages;
-}, 0);
-totalPagesElement.textContent = totalPages.toLocaleString();
-const pageTarget = 5000;
-const pagesRemaining = Math.max(0, pageTarget - totalPages);
-pageTargetElement.textContent = pageTarget.toLocaleString();
-pagesRemainingElement.textContent = pagesRemaining.toLocaleString();
-const now = new Date();
-const dayOfWeek = now.getDay();
-const daysSinceMonday = (dayOfWeek + 6) % 7;
-const startOfWeek = new Date(now);
-startOfWeek.setDate(now.getDate() - daysSinceMonday);
-startOfWeek.setHours(0, 0, 0, 0);
-const booksAddedThisWeek = books.filter(function (book) {
-  return (
-    new Date(book.createdAt) >= startOfWeek && new Date(book.createdAt) <= now
-  );
-}).length;
-booksThisWeekElement.textContent = booksAddedThisWeek;
-const tagCounts = {};
-books.forEach(function (book) {
-  const tag = book.tag;
-  if (tagCounts[tag]) {
-    tagCounts[tag]++;
-  } else {
-    tagCounts[tag] = 1;
+function updateDashboard() {
+  totalPages = books.reduce(function (total, book) {
+    return total + book.pages;
+  }, 0);
+
+  totalPagesElement.textContent = totalPages.toLocaleString();
+
+  let pageTarget = loadPageTarget();
+  pageTargetInput.value = pageTarget;
+
+  const pagesRemaining = Math.max(0, pageTarget - totalPages);
+  pageTargetElement.textContent = pageTarget.toLocaleString();
+  pagesRemainingElement.textContent = pagesRemaining.toLocaleString();
+
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const daysSinceMonday = (dayOfWeek + 6) % 7;
+  const startOfWeek = new Date(now);
+  startOfWeek.setDate(now.getDate() - daysSinceMonday);
+  startOfWeek.setHours(0, 0, 0, 0);
+
+  const booksAddedThisWeek = books.filter(function (book) {
+    return (
+      new Date(book.createdAt) >= startOfWeek &&
+      new Date(book.createdAt) <= now
+    );
+  }).length;
+
+  booksThisWeekElement.textContent = booksAddedThisWeek;
+
+  const tagCounts = {};
+
+  books.forEach(function (book) {
+    const tag = book.tag;
+
+    if (tagCounts[tag]) {
+      tagCounts[tag]++;
+    } else {
+      tagCounts[tag] = 1;
+    }
+  });
+
+  let mostCommonTag = "None";
+  let highestCount = 0;
+
+  for (const tag in tagCounts) {
+    if (tagCounts[tag] > highestCount) {
+      highestCount = tagCounts[tag];
+      mostCommonTag = tag;
+    }
   }
-});
-let mostCommonTag = "None";
-let highestCount = 0;
-for (const tag in tagCounts) {
-  if (tagCounts[tag] > highestCount) {
-    highestCount = tagCounts[tag];
-    mostCommonTag = tag;
-  }
+
+  mostCommonTagElement.textContent = mostCommonTag;
+  totalBooksElement.textContent = books.length;
 }
 
-mostCommonTagElement.textContent = mostCommonTag;
-totalBooksElement.textContent = books.length;
+updateDashboard();
+;
+
 showBooks(books);
 const searchInput = document.getElementById("search-books");
 const caseInsensitive = document.getElementById("case-insensitive");
@@ -159,12 +298,25 @@ bookForm.addEventListener("submit", function (event) {
       createdAt: now,
       updatedAt: now,
     };
-    books.push(book);
+    if (editingBookId !== null) {
+      const bookIndex = books.findIndex(function (item) {
+        return item.id === editingBookId;
+      });
+      if (bookIndex !== -1) {
+        book.id = books[bookIndex].id;
+        book.createdAt = books[bookIndex].createdAt;
+        book.updatedAt = new Date().toISOString();
+        books[bookIndex] = book;
+      }
+    } else {
+      books.push(book);
+    }
+    editingBookId = null;
     saveBooks(books);
     showBooks(books);
     updateWeeklyChart();
-    console.log("Book records:", book);
-    alert("Book added successfully!");
+    updateDashboard();
+        alert("Book added successfully!");
     bookForm.reset();
   }
 });

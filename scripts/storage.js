@@ -10,3 +10,14 @@ function loadBooks() {
     return JSON.parse(savedBooks);
   }
 }
+function savePageTarget(target) {
+  localStorage.setItem("pageTarget", target);
+}
+function loadPageTarget() {
+  const savedTarget = localStorage.getItem("pageTarget");
+  if (savedTarget === null) {
+    return 5000;
+  } else {
+    return Number(savedTarget);
+  }
+}

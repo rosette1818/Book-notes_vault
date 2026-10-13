@@ -64,7 +64,8 @@
         </select>
 
     </div>
-
+<button type="button" id="export-books">Export Books (JSON)</button>
+<input type="file" id="import-books" accept=".json,application/json">
    <ul id="books-list">
     </ul>
 </section>
@@ -100,13 +101,35 @@
             
           </div>
 
-          <button type="submit">Save Book</button>
+<button type="submit" id="submit-book">Save Book</button>
           <button type="reset">Clear Form</button>
         </form>
       </section>
 
       <section id="settings">
         <h2>Settings</h2>
+        <h3>Reading Goal</h3>
+        <label for="page-target-input">Page Target</label>
+        <input type="number" id="page-target-input" value="5000" min="0">
+        <button type="button" id="save-target">Save Target</button>
+        <p id="goal-status" aria-live="polite"></p>
+
+        <h3>Page Converter</h3>
+        <label for="page-count">Number of pages</label>
+        <input type="number"  id="page-count"  placeholder="Enter a page count please!"  min="0"/>
+        <label for="conversion-type">Conversion</label>
+<select id="conversion-type">
+  <option value="pages-to-sheets">
+    Pages to printed sheets (2 pages per sheet)
+  </option>
+  <option value="sheets-to-pages">
+    Printed sheets to pages (2 pages per sheet)
+  </option>
+</select>
+<h4>Conversion Result</h4>
+<p id="conversion-result" aria-live="polite">
+  Your conversion result will appear here.
+</p>
       </section>
 
       <section id="about">
