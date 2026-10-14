@@ -6,8 +6,19 @@ function loadBooks() {
 
   if (savedBooks === null) {
     return [];
-  } else {
-    return JSON.parse(savedBooks);
+  }
+
+  try {
+    const parsedBooks = JSON.parse(savedBooks);
+
+    if (!Array.isArray(parsedBooks)) {
+      return [];
+    }
+
+    return parsedBooks;
+  } catch (error) {
+    console.error("Could not load saved books:", error);
+    return [];
   }
 }
 function savePageTarget(target) {

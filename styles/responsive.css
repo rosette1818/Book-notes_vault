@@ -1,166 +1,154 @@
-
-/* =================================
-   SMALL MOBILE SCREENS
-================================= */
-
+/* =========================================
+   SMALL MOBILE — UP TO 359PX
+========================================= */
 @media (max-width: 359px) {
-  body {
-    padding: 0.75rem;
-  }
+  /* Page spacing */
+  body { padding: 0.75rem; }
 
-  section {
-    padding: 0.85rem;
-  }
+  /* Section spacing */
+  section { padding: 0.85rem; }
 
-  h1 {
-    font-size: 1.6rem;
-  }
+  /* Headings */
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.35rem; }
 
-  h2 {
-    font-size: 1.35rem;
-  }
+  /* Dashboard */
+  #dashboard { grid-template-columns: 1fr; }
 
-  #dashboard {
-    grid-template-columns: 1fr;
-  }
-
+  /* Buttons */
   button {
     max-width: 100%;
     padding: 0.65rem 0.85rem;
   }
 }
 
-/* =================================
-   MOBILE: 360px AND ABOVE
-================================= */
-
+/* =========================================
+   MOBILE — 360PX AND ABOVE
+========================================= */
 @media (min-width: 360px) {
-  body {
-    padding: 1rem;
-  }
+  /* Navigation */
+  nav ul { align-items: stretch; }
+  nav a { text-align: center; }
 
-  nav ul {
-    align-items: stretch;
-  }
-
-  nav a {
-    text-align: center;
-  }
-
-  #books-list li button {
-    min-width: 75px;
-  }
+  /* Book cards */
+  #books-list li button { min-width: 75px; }
 }
 
-/* =================================
-   TABLET: 768px AND ABOVE
-================================= */
-
+/* =========================================
+   TABLET — 768PX AND ABOVE
+========================================= */
 @media (min-width: 768px) {
-  header {
-    text-align: left;
+  /* Page and header */
+  body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
   }
 
+  header { text-align: left; }
+
+  /* Navigation */
   nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: flex-start;
-  }
-
-  nav a {
-    text-align: center;
-  }
-
-  #books-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  #dashboard {
     gap: 1rem;
   }
 
-  #weekly-chart {
-    max-width: 800px;
-  }
+  nav a { text-align: center; }
 
-  #add-book form {
-    max-width: 650px;
-  }
+  /* Main layout */
+  main { gap: 2rem; }
 
+  /* Book cards */
+  #books-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Dashboard */
+  #dashboard { gap: 1rem; }
+
+  /* Weekly chart */
+  #weekly-chart { max-width: 800px; }
+
+  /* Add book form */
+  #add-book form { max-width: 650px; }
+
+  /* Settings */
   #settings > input,
-  #settings > select {
-    max-width: 400px;
-  }
+  #settings > select { max-width: 400px; }
 }
 
-/* =================================
-   DESKTOP: 1024px AND ABOVE
-================================= */
-
+/* =========================================
+   DESKTOP — 1024PX AND ABOVE
+========================================= */
 @media (min-width: 1024px) {
+  /* Page and header */
   body {
+    max-width: 1200px;
     padding: 2.5rem;
   }
 
-  header {
-    padding: 2rem 0;
+  header { padding: 2rem 0; }
+
+  h1 { font-size: 2.5rem; }
+
+  /* Navigation */
+  nav { margin-bottom: 2.5rem; }
+  nav ul { gap: 1.5rem; }
+
+  /* Sections */
+  section { padding: 1.75rem; }
+
+  /* Book cards */
+  #books-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  /* Dashboard */
+  #dashboard { gap: 1.25rem; }
+  #dashboard p { padding: 1.1rem; }
+
+  /* Books table */
+  #books-table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  #books-list { display: none; }
+
+  #books-table th,
+  #books-table td {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
   }
 
-  nav {
-    margin-bottom: 2.5rem;
+  #books-table th {
+    background-color: var(--accent);
+    color: white;
   }
 
-  nav ul {
-    gap: 1.5rem;
+  #books-table tr:nth-child(even) {
+    background-color: var(--surface-soft);
   }
 
-  #books-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+  #books-table td button { margin: 0.25rem; }
 
-  #dashboard {
-    gap: 1.25rem;
-  }
+  /* Add book form */
+  #add-book form { max-width: 750px; }
 
-  #dashboard p {
-    padding: 1.1rem;
-  }
-
-  #add-book form {
-    max-width: 750px;
-  }
-
-  #settings {
-    max-width: 850px;
-  }
-
-  #about {
-    max-width: 950px;
-  }
+  /* Settings and about */
+  #settings { max-width: 850px; }
+  #about { max-width: 950px; }
 }
 
-/* =================================
-   PREVENT HORIZONTAL OVERFLOW
-================================= */
+/* =========================================
+   RESPONSIVE SAFETY — PREVENT OVERFLOW
+========================================= */
+img, video, canvas, svg { max-width: 100%; }
 
-img,
-video,
-canvas,
-svg {
-  max-width: 100%;
-}
-
-input,
-select,
-button {
-  max-width: 100%;
-}
+input, select, button { max-width: 100%; }
 
 #books-list,
 #weekly-chart,
 main,
-section {
-  min-width: 0;
-}
+section { min-width: 0; }

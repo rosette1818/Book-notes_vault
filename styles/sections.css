@@ -1,18 +1,17 @@
-
-/* =================================
-   DASHBOARD
-================================= */
-
+/* =========================================
+   DASHBOARD — GRID LAYOUT
+========================================= */
 #dashboard {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
-#dashboard h2 {
-  grid-column: 1 / -1;
-}
+#dashboard h2 { grid-column: 1 / -1; }
 
+/* =========================================
+   DASHBOARD — STATISTIC CARDS
+========================================= */
 #dashboard p {
   min-width: 0;
   margin: 0;
@@ -33,10 +32,9 @@
   font-weight: 700;
 }
 
-/* =================================
-   WEEKLY CHART
-================================= */
-
+/* =========================================
+   WEEKLY CHART — CONTAINER
+========================================= */
 #weekly-chart {
   display: flex;
   flex-direction: column;
@@ -45,6 +43,9 @@
   margin-top: 1rem;
 }
 
+/* =========================================
+   WEEKLY CHART — ROWS AND LABELS
+========================================= */
 .chart-row {
   display: flex;
   flex-direction: column;
@@ -59,6 +60,9 @@
   overflow-wrap: anywhere;
 }
 
+/* =========================================
+   WEEKLY CHART — BAR SIZE AND ANIMATION
+========================================= */
 .chart-bar {
   min-height: 0.7rem;
   max-width: 100%;
@@ -67,49 +71,30 @@
   transition: width 0.3s ease;
 }
 
-/* =================================
+/* =========================================
    BOOKS SECTION
-================================= */
+========================================= */
+#books { width: 100%; }
 
-#books {
-  width: 100%;
-}
+#books h2 { margin-bottom: 1.25rem; }
 
-#books h2 {
-  margin-bottom: 1.25rem;
-}
+#books-list:empty { margin-top: 0; }
 
-#books-list:empty {
-  margin-top: 0;
-}
-
-/* =================================
+/* =========================================
    ADD BOOK SECTION
-================================= */
+========================================= */
+#add-book { width: 100%; }
 
-#add-book {
-  width: 100%;
-}
+#add-book form { margin-top: 1rem; }
 
-#add-book form {
-  margin-top: 1rem;
-}
-
-/* =================================
+/* =========================================
    SETTINGS SECTION
-================================= */
+========================================= */
+#settings { width: 100%; }
 
-#settings {
-  width: 100%;
-}
+#settings h3 { margin-top: 1.5rem; }
 
-#settings h3 {
-  margin-top: 1.5rem;
-}
-
-#settings h3:first-of-type {
-  margin-top: 0;
-}
+#settings h3:first-of-type { margin-top: 0; }
 
 #settings h4 {
   margin-top: 1rem;
@@ -129,38 +114,20 @@
   overflow-wrap: anywhere;
 }
 
-/* =================================
+/* =========================================
    ABOUT SECTION
-================================= */
+========================================= */
+#about { width: 100%; }
 
-#about {
-  width: 100%;
-}
+#about h3 { margin-top: 1.5rem; }
 
-#about h3 {
-  margin-top: 1.5rem;
-}
+#about h3:first-of-type { margin-top: 0; }
 
-#about h3:first-of-type {
-  margin-top: 0;
-}
+#about p { max-width: 75ch; }
 
-#about p {
-  max-width: 75ch;
-}
+#about ul { margin-top: 0.5rem; }
 
-#about ul {
-  margin-top: 0.5rem;
-}
-
-#about a {
-  overflow-wrap: anywhere;
-}
-
-/* =================================
-   FOOTER
-================================= */
-
-footer {
-  border-top: 1px solid var(--border);
-}
+/* =========================================
+   FOOTER SECTION
+========================================= */
+footer { border-top: 1px solid var(--border); }

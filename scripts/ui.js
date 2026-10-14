@@ -160,4 +160,8 @@ function showStatus(message) {
   const statusMessage = document.getElementById("status-message");
 
   statusMessage.textContent = message;
+
+  setTimeout(function () {
+    statusMessage.textContent = "";
+  }, 3000);
 }

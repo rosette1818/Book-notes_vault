@@ -1,7 +1,6 @@
-/* =================================
-   BUTTONS
-================================= */
-
+/* =========================================
+   BUTTONS — ALL BUTTONS
+========================================= */
 button {
   padding: 0.75rem 1.2rem;
   border: 1px solid var(--accent);
@@ -14,60 +13,16 @@ button {
   transition: background-color 0.2s ease;
 }
 
-button:hover {
-  background-color: var(--accent-hover);
-}
+button:hover { background-color: var(--accent-hover); }
 
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* =================================
-   FORMS
-================================= */
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-form div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  background-color: var(--surface);
-  color: var(--text);
-  font: inherit;
-}
-
-input:focus,
-select:focus {
-  border-color: var(--accent);
-}
-
-input[type="checkbox"],
-input[type="file"] {
-  width: auto;
-}
-
-/* =================================
-   BOOK CARDS
-================================= */
-
+/* =========================================
+   BOOK CARDS — LIST CONTAINER
+========================================= */
 #books-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
@@ -77,6 +32,9 @@ input[type="file"] {
   list-style: none;
 }
 
+/* =========================================
+   BOOK CARDS — CARD
+========================================= */
 #books-list li {
   display: flex;
   flex-direction: column;
@@ -97,6 +55,9 @@ input[type="file"] {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
 }
 
+/* =========================================
+   BOOK CARDS — TITLE AND DETAILS
+========================================= */
 #books-list li h3 {
   width: 100%;
   margin-bottom: 1rem;
@@ -112,10 +73,14 @@ input[type="file"] {
   line-height: 1.5;
 }
 
-#books-list li button:first-of-type {
-  margin-top: auto;
-}
+/* =========================================
+   BOOK CARDS — EDIT BUTTON
+========================================= */
+#books-list li button:first-of-type { margin-top: auto; }
 
+/* =========================================
+   BOOK CARDS — DELETE BUTTON
+========================================= */
 #books-list li button:last-of-type {
   margin-top: 0.5rem;
   background-color: var(--danger);
@@ -127,121 +92,103 @@ input[type="file"] {
   background-color: var(--danger-hover);
 }
 
-/* =================================
-   SEARCH AND SORT
-================================= */
+/* =========================================
+   DELETE ALL BOOKS BUTTON
+========================================= */
+#delete-all-books {
+  margin-top: 1rem;
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: white;
+}
 
+#delete-all-books:hover { background-color: var(--danger-hover); }
+
+/* =========================================
+   FORMS — FORM LAYOUT
+========================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* =========================================
+   FORMS — LABELS
+========================================= */
+label { font-weight: 600; }
+
+/* =========================================
+   FORMS — INPUTS AND SELECTS
+========================================= */
+input,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+input:focus,
+select:focus { border-color: var(--accent); }
+
+input[type="checkbox"],
+input[type="file"] { width: auto; }
+
+/* =========================================
+   SEARCH — ERROR MESSAGE
+========================================= */
 #search-error {
   color: var(--danger);
   font-size: 0.9rem;
 }
 
-#sort-books {
-  margin-bottom: 1rem;
-}
+/* =========================================
+   SORT CONTROL
+========================================= */
+#sort-books { margin-bottom: 1rem; }
 
-/* =================================
-   IMPORT AND EXPORT
-================================= */
+/* =========================================
+   IMPORT BOOKS BUTTON / CONTROL
+========================================= */
+#import-books { margin-top: 1rem; }
 
-#import-books {
-  margin-top: 1rem;
-}
+/* =========================================
+   EXPORT BOOKS BUTTON / CONTROL
+========================================= */
+#export-books { margin-top: 1rem; }
 
-#export-books {
-  margin-top: 1rem;
-}
-
-/* =================================
-   CHART
-================================= */
-
-.chart-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-
+/* =========================================
+   WEEKLY CHART — BAR COMPONENT
+========================================= */
 .chart-bar {
   min-height: 12px;
   border-radius: 1rem;
   background-color: var(--accent);
 }
 
-/* =================================
-   ABOUT SECTION
-================================= */
-
+/* =========================================
+   ABOUT SECTION — LIST AND LINKS
+========================================= */
 #about ul {
   padding-left: 1.5rem;
   margin-bottom: 1rem;
 }
 
-#about li {
-  margin-bottom: 0.5rem;
-}
+#about li { margin-bottom: 0.5rem; }
 
-#about a {
-  overflow-wrap: anywhere;
-}
-/* DELETE ALL BOOKS BUTTON */
+#about a { overflow-wrap: anywhere; }
 
-#delete-all-books {
-  background-color: var(--danger);
-  border-color: var(--danger);
-  color: white;
-  margin-top: 1rem;
-}
-
-#delete-all-books:hover {
-  background-color: var(--danger-hover);
-}
-/* =================================
-   BOOK TABLE AND CARD VISIBILITY
-================================= */
-
-/* Mobile and tablet: show cards */
-#books-table {
-  display: none;
-}
-
-#books-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 1.25rem;
-}
-
-/* Desktop: show table */
-@media (min-width: 1024px) {
-  #books-table {
-    display: table;
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-  }
-
-  #books-list {
-    display: none;
-  }
-
-  #books-table th,
-  #books-table td {
-    padding: 1rem;
-    border: 1px solid var(--border);
-    text-align: left;
-  }
-
-  #books-table th {
-    background-color: var(--accent);
-    color: white;
-  }
-
-  #books-table tr:nth-child(even) {
-    background-color: var(--surface-soft);
-  }
-
-  #books-table td button {
-    margin: 0.25rem;
-  }
-}
+/* =========================================
+   BOOK TABLE — DEFAULT / MOBILE VISIBILITY
+========================================= */
+#books-table { display: none; }
