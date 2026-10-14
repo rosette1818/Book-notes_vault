@@ -8,7 +8,7 @@ A personal digital catalog for organizing the books you own or have read. Add, e
 
 ## Theme
 
-**Book & Notes Vault**, with an *Academic / Library* look: calm green-grey palette, serif type (Cambria), generous spacing and clear headings. It is designed mobile-first and tested at 360px, 768px and 1024px+. The original plan is in [M1.md](M1.md).
+**Book & Notes Vault**, with an _Academic / Library_ look: calm green-grey palette, serif type (Cambria), generous spacing and clear headings. It is designed mobile-first and tested at 360px, 768px and 1024px+. The original plan is in [M1.md](M1.md).
 
 ## Features
 
@@ -28,27 +28,27 @@ A personal digital catalog for organizing the books you own or have read. Add, e
 
 All validation lives in [`scripts/validators.js`](scripts/validators.js). Searching lives in [`scripts/search.js`](scripts/search.js).
 
-| What it checks | Pattern | Notes |
-|---|---|---|
-| Title / author is not blank | `/^\s*$/` (must **not** match) | Rejects empty and whitespace-only text |
-| Pages | `/^\d+$/` + range check | Whole numbers only, 1 to 5000 |
-| Tag | `/^[A-Za-z -]+$/` | Letters, spaces and hyphens only, no digits |
-| Date | `/^\d{4}-\d{2}-\d{2}$/` + calendar check | `YYYY-MM-DD`. Also rejects impossible dates such as `2026-02-30` and `2025-02-29` |
-| Repeated words in a title | `/\b(\w+)\s+\1\b/i` | Backreference. Rejects "Math Math" but allows "Math Science Math" |
-| Search box | whatever you type | Compiled with `new RegExp(input, "i")`, or without `i` when the checkbox is off |
+| What it checks              | Pattern                                  | Notes                                                                             |
+| --------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------- |
+| Title / author is not blank | `/^\s*$/` (must **not** match)           | Rejects empty and whitespace-only text                                            |
+| Pages                       | `/^\d+$/` + range check                  | Whole numbers only, 1 to 5000                                                     |
+| Tag                         | `/^[A-Za-z -]+$/`                        | Letters, spaces and hyphens only, no digits                                       |
+| Date                        | `/^\d{4}-\d{2}-\d{2}$/` + calendar check | `YYYY-MM-DD`. Also rejects impossible dates such as `2026-02-30` and `2025-02-29` |
+| Repeated words in a title   | `/\b(\w+)\s+\1\b/i`                      | Backreference. Rejects "Math Math" but allows "Math Science Math"                 |
+| Search box                  | whatever you type                        | Compiled with `new RegExp(input, "i")`, or without `i` when the checkbox is off   |
 
 ### Search edge cases handled
 
-| Try typing | What happens |
-|---|---|
-| *(empty box)* | Shows every book |
-| `[a-z` or `(` | Invalid regex: shows "Invalid expression!" and no results, no crash |
-| `^clean` | Anchors to the start of the title or author |
-| `\bcode\b` | Whole-word match |
-| `(Atomic\|Clean)` | Alternation with a capture group: highlights correctly with no duplicated text |
-| `a\|(b)` | Optional group: no "undefined" in the output |
-| `a*` | Can match nothing: shows every book, with no empty highlights |
-| Tick / untick "Search ignoring capitalization" | `^clean` matches "Clean Code" only when case-insensitive |
+| Try typing                                     | What happens                                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------------------------ |
+| _(empty box)_                                  | Shows every book                                                               |
+| `[a-z` or `(`                                  | Invalid regex: shows "Invalid expression!" and no results, no crash            |
+| `^clean`                                       | Anchors to the start of the title or author                                    |
+| `\bcode\b`                                     | Whole-word match                                                               |
+| `(Atomic\|Clean)`                              | Alternation with a capture group: highlights correctly with no duplicated text |
+| `a\|(b)`                                       | Optional group: no "undefined" in the output                                   |
+| `a*`                                           | Can match nothing: shows every book, with no empty highlights                  |
+| Tick / untick "Search ignoring capitalization" | `^clean` matches "Clean Code" only when case-insensitive                       |
 
 `seed.json` contains 10 sample books. Use **Import** to load it for testing.
 
@@ -56,15 +56,15 @@ All validation lives in [`scripts/validators.js`](scripts/validators.js). Search
 
 The app uses native browser keyboard behavior and has **no custom shortcuts**. Every control can be reached and used without a mouse.
 
-| Key | Action |
-|---|---|
-| `Tab` / `Shift+Tab` | Move forward / backward through controls |
-| `Enter` on **Skip to main content** | Jump past the navigation (first `Tab` stop on the page) |
-| `Enter` on a nav link | Jump to Dashboard, Books, Add A Book, Settings or About |
-| `Enter` or `Space` | Press the focused button (Edit, Delete, Export, Save, Clear, Delete All) |
-| `Space` | Tick or untick the case-insensitive checkbox |
-| `↑` / `↓` | Change the Sort or Conversion option when the select is focused |
-| `Enter` in a form field | Submit the Add / Edit form |
+| Key                                 | Action                                                                   |
+| ----------------------------------- | ------------------------------------------------------------------------ |
+| `Tab` / `Shift+Tab`                 | Move forward / backward through controls                                 |
+| `Enter` on **Skip to main content** | Jump past the navigation (first `Tab` stop on the page)                  |
+| `Enter` on a nav link               | Jump to Dashboard, Books, Add A Book, Settings or About                  |
+| `Enter` or `Space`                  | Press the focused button (Edit, Delete, Export, Save, Clear, Delete All) |
+| `Space`                             | Tick or untick the case-insensitive checkbox                             |
+| `↑` / `↓`                           | Change the Sort or Conversion option when the select is focused          |
+| `Enter` in a form field             | Submit the Add / Edit form                                               |
 
 Tab order follows the page: skip link → navigation → search → case checkbox → sort → export / delete all / import → each book's Edit and Delete → Add Book form → Settings → About.
 
@@ -85,7 +85,7 @@ Tab order follows the page: skip link → navigation → search → case checkbo
 
 ## Run the app
 
-No build step. Open `index.html` in a browser, or use VS Code's *Live Server*.
+No build step. Open `index.html` in a browser, or use VS Code's _Live Server_.
 
 ## Run the tests
 
@@ -138,8 +138,3 @@ Each book is stored as:
 ## Contact
 
 r.umurerwa@alustudent.com
-
-## AI assistance
-
-<!-- TODO: edit this so it is accurate for what you actually did -->
-Claude (Anthropic) helped draft this README and `.gitignore`, wrote the `state.js` module and the matching edits in `main.js` / `ui.js` / `index.html`, fixed the search-highlighting bug in `highlightText()`, and added the related tests in `tests.html`. I reviewed and tested these changes myself.
