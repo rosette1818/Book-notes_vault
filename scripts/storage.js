@@ -3,7 +3,6 @@ function saveBooks(books) {
 }
 function loadBooks() {
   const savedBooks = localStorage.getItem("bookNotesVault");
-
   if (savedBooks === null) {
     return [];
   }

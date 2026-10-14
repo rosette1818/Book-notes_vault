@@ -22,7 +22,6 @@ function validateDate(date) {
   }
 
   const [year, month, day] = date.split("-").map(Number);
-
   const parsedDate = new Date(year, month - 1, day);
 
   return (

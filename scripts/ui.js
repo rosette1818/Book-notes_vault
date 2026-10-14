@@ -6,7 +6,6 @@ function showBooks(displayedBooks, regex) {
   tableBody.innerHTML = "";
 
   displayedBooks.forEach(function (book) {
-    // Create the Edit and Delete buttons
     function createActionButtons(container) {
       const editButton = document.createElement("button");
       editButton.type = "button";
@@ -64,7 +63,6 @@ function showBooks(displayedBooks, regex) {
       container.appendChild(deleteButton);
     }
 
-    // MOBILE: Create a book card
     const bookCard = document.createElement("li");
 
     const titleElement = document.createElement("h3");
@@ -90,7 +88,6 @@ function showBooks(displayedBooks, regex) {
     createActionButtons(bookCard);
     booksList.appendChild(bookCard);
 
-    // DESKTOP: Create a table row
     const tableRow = document.createElement("tr");
 
     const values = [
@@ -110,7 +107,6 @@ function showBooks(displayedBooks, regex) {
     const actionsCell = document.createElement("td");
     createActionButtons(actionsCell);
     tableRow.appendChild(actionsCell);
-
     tableBody.appendChild(tableRow);
   });
 }
@@ -158,9 +154,7 @@ function highlightText(text, regex) {
 }
 function showStatus(message) {
   const statusMessage = document.getElementById("status-message");
-
   statusMessage.textContent = message;
-
   setTimeout(function () {
     statusMessage.textContent = "";
   }, 3000);
