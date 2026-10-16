@@ -21,16 +21,15 @@ function validateDate(date) {
     return false;
   }
 
-  const [year, month, day] = date.split("-").map(Number);
-  const parsedDate = new Date(year, month - 1, day);
+ const [year, month, day] = data.split("-").map(Number);
+ const parsedDate = new Date(year, month - 1, day);
 
-  return (
-    parsedDate.getFullYear() === year &&
-    parsedDate.getMonth() === month - 1 &&
-    parsedDate.getDate() === day
-  );
+ return (
+   parsedDate.getFullYear() === year &&
+   parsedDate.getMonth() === month -1 &&
+   parsedDate.getDate() === day
+ );
 }
-
 function hasRepeatedWords(title) {
   return /\b(\w+)\s+\1\b/i.test(title);
 }

@@ -8,21 +8,21 @@ A personal digital catalog for organizing the books you own or have read. Add, e
 
 ## Theme
 
-**Book & Notes Vault**, with an _Academic / Library_ look: calm green-grey palette, serif type (Cambria), generous spacing and clear headings. It is designed mobile-first and tested at 360px, 768px and 1024px+. The original plan is in [M1.md](M1.md).
+**Book & Notes Vault**, with an _Academic / Library_ look: calm green-gray palette, serif type (Cambria), generous spacing and clear headings. It is designed mobile-first and tested at 360px, 760px and 1024px+. The original plan is in [M1.md](M1.md).
 
 ## Features
 
-- **Dashboard:** total books, total pages, most common tag, books added this week, page target, pages remaining, and a bar chart of books added over the last 7 days.
+- **Dashboard:** total books, total pages, most common tag, books added this, page target,pages remaining,and a bar chart of books added over the last 7 days.
 - **Add / edit / delete books:** title, author, pages, tag and date, all validated with regular expressions. The same form switches to "Update Book" when you press Edit.
-- **Delete all:** removes every book after a confirmation.
-- **Live regex search:** type a regular expression to filter by title or author. Matches are highlighted with `<mark>`. A checkbox switches case-insensitive matching on or off, and invalid patterns show an error instead of crashing.
+- **Delete all:** removes every week book after a confirmation.
+- **Live regex search:** type a regular expression to filter the title or author. Matches are highlighted with `<mark>`. A checkbox switches case-insensitive matching on or off, and invalid patterns show an error instead of crashing.
 - **Sorting:** by title, date added, or number of pages.
-- **Reading goal:** set a page target. A live message tells you how many pages remain, or that you reached or exceeded the goal.
+- **Reading goal:** set a page target. A live message tells you how many pages remain, or that you reached or exceed the goal.
 - **Page converter (Settings):** pages to printed sheets, and sheets to pages (2 pages per sheet).
-- **Import / export JSON:** export your collection to `my-books.json`, or import a file. Imports are validated first. **Importing replaces the current collection.**
-- **Persistent storage:** books and the page target are saved in `localStorage`, so they survive a refresh.
-- **Responsive layout:** a table on desktop (1024px and up), cards on tablet and mobile.
-- **About page:** purpose, features and contact details.
+- **Import / export JSON:** export your collection collection to `my-books.json`, or import a file. Imports are validated first. **Importing replaces the current colection.**
+- **Persistent storage:** books and the page target are saved in `localStorage` , so they survive a refersh.
+- **Responsive layput:** a table on desktop (1024px and up), cards and mobile.
+- **About page:** purpose, features, and contact details.
 
 ## Regex catalog
 

@@ -1,4 +1,7 @@
+
+// first js file
 const bookForm = document.getElementById("book-form");
+
 const books = loadBooks();
 let editingBookId = null;
 const submitBookButton = document.getElementById("submit-book");
@@ -12,18 +15,19 @@ const pageTargetElement = document.getElementById("page-target");
 const pagesRemainingElement = document.getElementById("pages-remaining");
 const pageTargetInput = document.getElementById("page-target-input");
 const saveTargetButton = document.getElementById("save-target");
+const exportBooksButton = document.getElementById("export-books");
 const goalStatus = document.getElementById("goal-status");
 const pageCountInput = document.getElementById("page-count");
 const conversionType = document.getElementById("conversion-type");
 const conversionResult = document.getElementById("conversion-result");
-const exportBooksButton = document.getElementById("export-books");
 const deleteAllBooksButton = document.getElementById("delete-all-books");
 const importBooksInput = document.getElementById("import-books");
 const themeToggle = document.getElementById("theme-toggle");
-themeToggle.addEventListener("change", function() {
+// const loadPageTarget =  document.getElementById("load-page-target")
+themeToggle.addEventListener("change", function () {
   document.documentElement.setAttribute(
     "data-theme",
-    themeToggle.checked ? "dark" : "light"
+    themeToggle.checked ? "dark" : "light",
   );
 });
 importBooksInput.addEventListener("change", function (event) {
@@ -55,22 +59,24 @@ importBooksInput.addEventListener("change", function (event) {
       const ids = importedBooks.map(function (book) {
         return book.id;
       });
+
+      const hasDuplicateIds = new Set(ids).size !== ids.length;
       if (!isValid || hasDuplicateIds) {
         throw new Error("Invalid book information or duplicate IDs");
       }
-      const hasDuplicateIds = new Set(ids).size !== ids.length;
-
+      
       books.splice(0, books.length, ...importedBooks);
       saveBooks(books);
       showBooks(books);
       updateWeeklyChart();
       updateDashboard();
-      showStatus("Books imported successfully!");
+      alert("Books imported successfully!");
       importBooksInput.value = "";
 
       console.log(importedBooks);
     } catch (error) {
       console.error("Import error:", error);
+      alert(error.message);
 
       if (error.message.includes("duplicate")) {
         importError.textContent =

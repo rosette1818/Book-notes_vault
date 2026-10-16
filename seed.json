@@ -12,7 +12,7 @@
   {
     "id": "seed-002",
     "title": "Atomic Habits",
-    "author": "James Clear",
+    "author": "James Ntwari",
     "pages": 320,
     "tag": "Self Development",
     "dateAdded": "2026-09-02",
@@ -22,7 +22,7 @@
   {
     "id": "seed-003",
     "title": "Clean Code",
-    "author": "Robert C. Martin",
+    "author": "Robert Kayihura",
     "pages": 464,
     "tag": "Technology",
     "dateAdded": "2026-09-03",
@@ -32,7 +32,7 @@
   {
     "id": "seed-004",
     "title": "The Alchemist",
-    "author": "Paulo Coelho",
+    "author": "Paulo Muheto",
     "pages": 208,
     "tag": "Fiction",
     "dateAdded": "2026-09-04",
@@ -42,7 +42,7 @@
   {
     "id": "seed-005",
     "title": "Introduction to Algorithms",
-    "author": "Thomas H. Cormen",
+    "author": "Thomas Habumuremyi",
     "pages": 1312,
     "tag": "Technology",
     "dateAdded": "2026-09-05",
@@ -51,8 +51,8 @@
   },
   {
     "id": "seed-006",
-    "title": "The Lean Startup",
-    "author": "Eric Ries",
+    "title": "Akamaro k'amazi",
+    "author": "Eric Semana",
     "pages": 336,
     "tag": "Business",
     "dateAdded": "2026-09-06",
@@ -61,8 +61,8 @@
   },
   {
     "id": "seed-007",
-    "title": "Educated",
-    "author": "Tara Westover",
+    "title": "Narigishijwe",
+    "author": "Tamara Kaze",
     "pages": 352,
     "tag": "Biography",
     "dateAdded": "2026-09-07",
@@ -71,8 +71,8 @@
   },
   {
     "id": "seed-008",
-    "title": "Deep Work",
-    "author": "Cal Newport",
+    "title": "Munyakazi",
+    "author": "Bruce Melodie",
     "pages": 304,
     "tag": "Productivity",
     "dateAdded": "2026-09-08",
@@ -81,8 +81,8 @@
   },
   {
     "id": "seed-009",
-    "title": "A Brief History of Time",
-    "author": "Stephen Hawking",
+    "title": "Amateka yacu mu bihe",
+    "author": "Stephen Kagabo",
     "pages": 256,
     "tag": "Science",
     "dateAdded": "2026-09-09",
@@ -91,10 +91,10 @@
   },
   {
     "id": "seed-010",
-    "title": "The Psychology of Money",
-    "author": "Morgan Housel",
-    "pages": 256,
-    "tag": "Finance",
+    "title": "The benefits of using you time well",
+    "author": "general Bender",
+    "pages": 784,
+    "tag": "Life",
     "dateAdded": "2026-09-10",
     "createdAt": "2026-09-10T18:00:00.000Z",
     "updatedAt": "2026-09-10T18:00:00.000Z"

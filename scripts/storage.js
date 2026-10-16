@@ -1,6 +1,7 @@
 function saveBooks(books) {
   localStorage.setItem("bookNotesVault", JSON.stringify(books));
 }
+
 function loadBooks() {
   const savedBooks = localStorage.getItem("bookNotesVault");
   if (savedBooks === null) {
@@ -16,10 +17,11 @@ function loadBooks() {
 
     return parsedBooks;
   } catch (error) {
-    console.error("Could not load saved books:", error);
+    console.error("could not load saved Books:", error);
     return [];
   }
 }
+
 function savePageTarget(target) {
   localStorage.setItem("pageTarget", target);
 }

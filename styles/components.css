@@ -10,14 +10,43 @@ button {
   transition: background-color 0.2s ease;
 }
 
+.delete-button{
+  background-color: var(--danger);
+}
+
+.import-button{
+  background-color:cornsilk
+}
+/* .delete-button {
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--danger);
+  border-radius: 0.5rem;
+  background-color: var(--danger);
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s
+} */
+
+
 button:hover {
   background-color: var(--accent-hover);
 }
+/* 
+.delete-button:hover {
+  background-color: var(--danger-hover);
+} */
 
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+/* 
+.delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+} */
 
 #books-list {
   display: grid;

@@ -1,23 +1,24 @@
-function compileRegex(input, ignoreCase = true) {
-    if (input.trim() === "") {
+// thhe js file
+function compileRegex(input, ignoreCase = true){
+    if (input.trim() === ""){
         return null;
     }
 
-    try {
+    try{
         return new RegExp(input, ignoreCase ? "i" : "");
-    } catch (error) {
+    }
+
+    catch(error) {
         return false;
     }
 }
 
-function searchBooks(books, searchText, ignoreCase = true) {
+function searchBooks(books, searchText, ignoreCase = true){
     const regex = compileRegex(searchText, ignoreCase);
-    if (regex === null) {
-        return books;
-    }
-    if (regex === false) {
+    if (regex === null){
         return [];
     }
+
     return books.filter(function (book) {
         regex.lastIndex = 0;
         const titleMatches = regex.test(book.title);
@@ -25,4 +26,6 @@ function searchBooks(books, searchText, ignoreCase = true) {
         const authorMatches = regex.test(book.author);
         return titleMatches || authorMatches;
     });
-}
+
+    }
+

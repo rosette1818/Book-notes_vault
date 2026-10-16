@@ -1,3 +1,5 @@
+// testing if import will import invalid json files
+
 {
   "title": "Harry Potter",
   "author": "J.K. Rowling",

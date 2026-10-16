@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book & Notes Vault</title>
-<link rel="stylesheet" href="styles/styles.css" />
-<link rel="stylesheet" href="styles/themes.css" />
-<link rel="stylesheet" href="styles/components.css" />
-<link rel="stylesheet" href="styles/sections.css" />
-<link rel="stylesheet" href="styles/responsive.css" />
+
+    <!-- linking differnt css files to reduce a large number of lines -->
+
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/themes.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/sections.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
   </head>
+
   <body>
     <a href="#main-content">Skip to main content</a>
     <header>
@@ -39,56 +43,58 @@
         <p id="page-target">0</p>
         <p>Pages remaining</p>
         <p id="pages-remaining">0</p>
-              </section>
+      </section>
+
       <section aria-labelledby="weekly-chart-heading">
-  <h3 id="weekly-chart-heading">Books Added In The Last 7 Days</h3>
-  <div id="weekly-chart"></div>
-</section>
+        <h3 id="weekly-chart-heading">Books Added In The Last 7 Days</h3>
+        <div id="weekly-chart"></div>
+      </section>
 
       <section id="books">
         <h2>Books</h2>
         <p id="status-message" role="status" aria-live="polite"></p>
-    <div>
-        <label for="search-books">Search books:</label>
-         <label for="case-insensitive">
-    <input type="checkbox" id="case-insensitive" checked />
-         Search  ignoring capitalization
-    </label>
-        <input type="text" id="search-books" placeholder="Search by title or author...">
-        <p id="search-error" role="alert"></p>
+        <div>
+          <label for="search-books">Search books:</label>
+          <label for="case-insensitive">
+            <input type="checkbox" id="case-insensitive" checked />
+            Search ignoring capitalization
+          </label>
+          <input
+            type="text"
+            id="search-books"
+            placeholder="Search by title or author"
+          />
+          <p id="search-error" role="alert"></p>
         </div>
 
-   <div> 
-        <label for="sort-books">Sort books by:</label>
-        <select id="sort-books">
-         <option value="title">Title</option>
-         <option value="date">Date Added</option>
-         <option value="pages">Number of Pages</option>
-        </select>
+        <div>
+          <label for="sort-books">Sort books by:</label>
+          <select id="sort-books">
+            <option value="title">Title</option>
+            <option value="date">Date Added</option>
+            <option value="pages">Pages</option>
+          </select>
+        </div>
+        <button type="button" id="delete-all-books">Delete All Books</button>
+        <div id="books-container">
+          <table id="books-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Tag</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="books-table-body"></tbody>
+          </table>
 
-    </div>
-<button type="button" id="delete-all-books">
-  Delete All Books
-</button>
-   <div id="books-container">
-  <table id="books-table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Tag</th>
-        <th>Date Added</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody id="books-table-body"></tbody>
-  </table>
+          <ul id="books-list"></ul>
+        </div>
+      </section>
 
-  <ul id="books-list"></ul>
-</div>
-</section>
-     
       <section id="add-book">
         <h2>Add a Book</h2>
         <form id="book-form">
@@ -106,23 +112,35 @@
 
           <div>
             <label for="pages">Pages</label>
-            <input type="number" id="pages" name="pages" min="1" max="5000" required />
+            <input
+              type="number"
+              id="pages"
+              name="pages"
+              min="1"
+              max="5000"
+              required
+            />
           </div>
 
           <div>
             <label for="tag">Tag</label>
-            <input type="text" id="tag" name="tag" placeholder="e.g. Novel or Mathematics" required />
+            <input
+              type="text"
+              id="tag"
+              name="tag"
+              placeholder="e.g. Novel or Mathematics"
+              required
+            />
             <p id="tag-error" role="alert"></p>
           </div>
 
           <div>
             <label for="date">Date</label>
-            <input type="date" id="date" name="date" required/>
+            <input type="date" id="date" name="date" required />
             <p id="date-error" role="alert"></p>
-            
           </div>
 
-<button type="submit" id="submit-book">Save Book</button>
+          <button type="submit" id="submit-book">Save Book</button>
           <button type="reset">Clear Form</button>
         </form>
       </section>
@@ -131,78 +149,85 @@
         <h2>Settings</h2>
         <h3>Reading Goal</h3>
         <label for="page-target-input">Page Target</label>
-        <input type="number" id="page-target-input" value="5000" min="0">
+        <input type="number" id="page-target-input" value="5000" min="0" />
         <button type="button" id="save-target">Save Target</button>
         <p id="goal-status" aria-live="polite"></p>
 
         <h3>Page Converter</h3>
         <label for="page-count">Number of pages</label>
-        <input type="number"  id="page-count"  placeholder="Enter a page count please!"  min="0"/>
+        <input
+          type="number"
+          id="page-count"
+          placeholder="Enter a page count please!"
+          min="0"
+        />
         <label for="conversion-type">Conversion</label>
-<select id="conversion-type">
-  <option value="pages-to-sheets">
-    Pages to printed sheets (2 pages per sheet)
-  </option>
-  <option value="sheets-to-pages">
-    Printed sheets to pages (2 pages per sheet)
-  </option>
-</select>
-<h4>Conversion Result</h4>
-<p id="conversion-result" aria-live="polite">
-  Your conversion result will appear here.
-</p>
-<div class="data-management">
-  <h3>Data Management</h3>
+        <select id="conversion-type">
+          <option value="pages-to-sheets">
+            Pages to printed sheets (2 pages per sheet)
+          </option>
+          <option value="sheets-to-pages">
+            Printed sheets to pages (2 pages per sheet)
+          </option>
+        </select>
+        <h4>Conversion Result</h4>
+        <p id="conversion-result" aria-live="polite">
+          Your conversion result will appear here.
+        </p>
+        <div class="data-management">
+          <h3>Data Management</h3>
+<!-- export button -->
+          <div>
+            <button type="button" id="export-books">Export Books (JSON)</button>
 
-  <div>
-    <button type="button" id="export-books">
-      Export Books (JSON)
-    </button>
+            <label for="import-books">Import Books (JSON)</label>
+            <input
+              type="file"
+              id="import-books"
+              accept=".json,application/json"
+            />
+            <p id="import-error" role="alert"></p>
+          </div>
 
-    <label for="import-books">Import Books (JSON)</label>
-    <input
-      type="file"
-      id="import-books"
-      accept=".json,application/json"
-    />
-    <p id="import-error" role="alert"></p>
-  </div>
+          <p id="import-error" role="alert"></p>
+          <p id="import-status" role="status"></p>
+        </div>
 
-  <p id="import-error" role="alert"></p>
-  <p id="import-status" role="status"></p>
-</div>
-
- <label for="theme-toggle">Dark Mode</label>
-<input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle">Dark Mode</label>
+        <input type="checkbox" id="theme-toggle" />
       </section>
 
-     <section id="about">
-  <h2>About</h2>
+<!-- the about section -->
 
-  <h3>Our Purpose</h3>
-  <p>
-    Book & Notes Vault helps readers organize their personal book
-    collections in one place. Users can add, search, sort, edit,
-    and delete book records, track reading goals, and back up
-    their collections. Not only that , users can also import and export json files.
-    Please use Book & Notes Vault to keep track    of your books
-  </p>
-  <h3>Features</h3>
-<ul>
-  <li>Organize books by title, author, page count, and category.</li>
-  <li>Search and sort your book collection.</li>
-  <li>Edit, update and delete book records.</li>
-  <li>Track reading statistics and goals.</li>
-  <li>Save records locally in the browser.</li>
-  <li>Import and export book data using JSON.</li>
-</ul>
-<h3>Contact</h3>
-<p>
-  Have questions, suggestions, or feedback?
-  Feel free to contact the project creator at
-  <a href="mailto:r.umurerwa@alustudent.com">r.umurerwa@alustudent.com</a>.
-</p>
-</section>
+      <section id="about">
+        <h2>About</h2>
+
+        <h3>Our Purpose</h3>
+        <p>
+          Book & Notes Vault helps readers organize their personal book
+          collections in one place. Users can add, search, sort, edit, and
+          delete book records, track reading goals, and back up their
+          collections. Not only that , users can also import and export json
+          files. Please use Book & Notes Vault to keep track of your books
+        </p>
+        <h3>Features</h3>
+        <ul>
+          <li>Organize books by title, author, pages, and category.</li>
+          <li>Search and sort your book collection.</li>
+          <li>Edit, update and delete book records.</li>
+          <li>Track reading statistics and goals.</li>
+          <li>Save records locally in the browser.</li>
+          <li>Import and export book data using JSON.</li>
+        </ul>
+        <h3>Contact</h3>
+        <p>
+          Have questions, suggestions, or feedback? Feel free to contact the
+          project creator at
+          <a href="mailto:r.umurerwa@alustudent.com"
+            >r.umurerwa@alustudent.com</a
+          >.
+        </p>
+      </section>
     </main>
 
     <footer>
@@ -213,6 +238,5 @@
     <script src="scripts/ui.js"></script>
     <script src="scripts/search.js"></script>
     <script src="scripts/main.js"></script>
-
   </body>
 </html>

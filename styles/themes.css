@@ -32,8 +32,20 @@ html[data-theme="dark"] {
   --shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
 }
 
-body { background-color: var(--background); color: var(--text); }
-p, label, li { color: var(--text); }
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+p,
+li {
+  color: var(--text);
+}
+
+label {
+  background-color: var(--surface-soft);
+  color: var(--text)
+}
 
 ::placeholder {
   color: var(--text-muted);
